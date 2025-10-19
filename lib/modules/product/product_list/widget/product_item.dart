@@ -12,7 +12,7 @@ class ProductItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        ItemValue(label: product.name, flex: 2),
+        ItemValue(label: product.fullName, flex: 4),
         ItemValue(
           label: product.lastPrice.displaySimplePrice(),
           textAlign: TextAlign.end,
@@ -20,6 +20,12 @@ class ProductItem extends StatelessWidget {
         ItemValue(
           label: product.priceAverage.displaySimplePrice(),
           textAlign: TextAlign.end,
+        ),
+        Flexible(
+          child: Align(
+            alignment: Alignment.centerRight,
+            child: product.priceArrowIcon,
+          ),
         ),
       ],
     );

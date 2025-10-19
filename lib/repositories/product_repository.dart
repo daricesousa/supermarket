@@ -1,4 +1,5 @@
 import 'package:get_storage/get_storage.dart';
+import 'package:supermarket/core/constants/constants.dart';
 import 'package:supermarket/core/utils/storage_keys.dart';
 import 'package:supermarket/models/product_model.dart';
 import 'package:supermarket/models/buy_model.dart';
@@ -7,8 +8,6 @@ class ProductRepository {
   final GetStorage storage;
   ProductRepository({required this.storage});
 
-  final LIMITE_BUYS = 10;
-
   List<ProductModel> findAll() {
     // storage.write('products', <Map<String, dynamic>>[]);
     final res = storage.read(StorageKeys.products);
@@ -16,11 +15,21 @@ class ProductRepository {
     return List<ProductModel>.from((res as List).map(ProductModel.fromMap));
   }
 
-  ProductModel create({required String name}) {
+  ProductModel create({
+    required String name,
+    required double unitSize,
+    required String unitType,
+  }) {
     final products = findAll();
 
     final id = DateTime.now().millisecondsSinceEpoch.toString();
-    final product = ProductModel(id: id, name: name, buys: []);
+    final product = ProductModel(
+      id: id,
+      name: name,
+      buys: [],
+      unitSize: unitSize,
+      unitType: unitType,
+    );
     products.add(product);
     storage.write(
       StorageKeys.products,
@@ -67,12 +76,14 @@ class ProductRepository {
       date: DateTime.now(),
     );
     final lastBuys = product.buys;
-    if (lastBuys.length == LIMITE_BUYS) {
+    if (lastBuys.length == Constants.LIMITE_BUYS) {
       lastBuys.removeLast();
     }
     final productEdit = ProductModel(
       id: product.id,
       name: product.name,
+      unitSize: product.unitSize,
+      unitType: product.unitType,
       buys: [buy, ...lastBuys],
     );
     update(product: productEdit);

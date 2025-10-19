@@ -8,7 +8,7 @@ class ItemValue extends StatelessWidget {
     super.key,
     required this.label,
     this.textAlign,
-    this.flex = 1,
+    this.flex = 2,
   });
 
   @override

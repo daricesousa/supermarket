@@ -38,6 +38,26 @@ class ProductFormPage extends GetView<ProductFormController> {
                 ),
                 SizedBox(height: 20),
                 Row(
+                  children: [
+                    Expanded(
+                      child: AppFormField(
+                        label: 'Tamanho da unidade',
+                        controller: controller.controllerUnitSize,
+                        textInputType: TextInputType.number,
+                      ),
+                    ),
+                    SizedBox(width: 20),
+                    Expanded(
+                      child: AppFormField(
+                        label: 'Unidade de medida',
+                        controller: controller.controllerUnitType,
+                      ),
+                    ),
+                  ],
+                ),
+
+                SizedBox(height: 20),
+                Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
                     AppButton(

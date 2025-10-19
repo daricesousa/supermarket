@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:supermarket/models/buy_model.dart';
 import 'package:supermarket/models/product_model.dart';
@@ -11,20 +10,9 @@ class ProductBuyListController extends GetxController {
 
   final buys = <BuyModel>[].obs;
   late final ProductModel product;
-  final controllerSearch = TextEditingController();
-  final q = ''.obs;
-
-  @override
-  void onClose() {
-    controllerSearch.dispose();
-    super.onClose();
-  }
 
   @override
   void onInit() {
-    controllerSearch.addListener(() {
-      q.value = controllerSearch.text.toUpperCase();
-    });
     findProduct();
     super.onInit();
   }
@@ -57,6 +45,8 @@ class ProductBuyListController extends GetxController {
         id: product.id,
         name: product.name,
         buys: [...buys],
+        unitSize: product.unitSize,
+        unitType: product.unitType,
       ),
     );
   }

@@ -12,7 +12,9 @@ class AppFormField extends StatelessWidget {
   final void Function(String)? onChanged;
   final void Function(String)? onFieldSubmitted;
   final bool autofocus;
+  final int maxLines;
   final Widget? suffixIcon;
+  final bool enabled;
   const AppFormField({
     super.key,
     required this.label,
@@ -26,11 +28,14 @@ class AppFormField extends StatelessWidget {
     this.onFieldSubmitted,
     this.suffixIcon,
     this.focusNode,
+    this.maxLines = 1,
+    this.enabled = true,
   });
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      enabled: enabled,
       autovalidateMode: AutovalidateMode.onUserInteraction,
       controller: controller,
       autofocus: autofocus,
@@ -49,6 +54,7 @@ class AppFormField extends StatelessWidget {
       validator: validator,
       onChanged: onChanged,
       onFieldSubmitted: onFieldSubmitted,
+      maxLines: maxLines,
     );
   }
 }

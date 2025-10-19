@@ -39,6 +39,7 @@ class ProductListController extends GetxController {
   @override
   void onClose() {
     controllerSearch.dispose();
+    focusSearch.dispose();
     super.onClose();
   }
 

@@ -83,12 +83,13 @@ class ProductListPage extends GetView<ProductListController> {
                   SizedBox(height: 16),
                   Row(
                     children: [
-                      ItemValue(label: 'Nome', flex: 2),
+                      ItemValue(label: 'Nome', flex: 4),
                       ItemValue(
                         label: 'Último (R\$)',
                         textAlign: TextAlign.end,
                       ),
                       ItemValue(label: 'Média (R\$)', textAlign: TextAlign.end),
+                      ItemValue(label: '', textAlign: TextAlign.end, flex: 1),
                     ],
                   ),
                   SizedBox(height: 8),

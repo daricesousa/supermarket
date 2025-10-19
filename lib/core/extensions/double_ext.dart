@@ -7,20 +7,13 @@ extension DoubleExt on double {
     return toStringAsFixed(2).replaceAll('.', ',');
   }
 
-  String displayIntOrDouble() {
+  String displayIntOrDouble({int decimalPlaces = 2}) {
     if (this % 1 == 0) {
       return toInt().toString();
     } else {
-      return toStringAsFixed(2).replaceAll('.', ',');
+      return toStringAsFixed(decimalPlaces).replaceAll('.', ',');
     }
   }
 }
 
-extension StringExt on String {
-  double toPrice() {
-    return double.tryParse(
-          replaceAll('R\$', '').replaceAll(',', '.'),
-        ) ??
-        0.0;
-  }
-}
+

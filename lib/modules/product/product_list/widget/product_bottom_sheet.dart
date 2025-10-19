@@ -19,7 +19,7 @@ class ProductBottomSheet extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AppBottomSheet(
-      title: product.name,
+      title: product.fullName,
       actions: [
         ListTile(
           leading: const Icon(Icons.bar_chart),
